@@ -1,0 +1,75 @@
+gcc -g p10original.c
+gdb a.out
+
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x772: file p10original.c, line 15.
+(gdb) r
+Starting program: /home/runner/pps-test1-Supriya-26/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p10original.c:15
+15       n1=input();
+(gdb) s
+input () at p10original.c:23
+23  {
+(gdb) n
+25      printf("For a complex number \n");
+(gdb) n
+For a complex number 
+26      printf("Enter the real and imaginary parts: ");
+(gdb) n
+27      scanf("%f %f", &n1.real, &n1.imag);
+(gdb) n
+Enter the real and imaginary parts: 3
+6
+28      return n1;
+(gdb) n
+29  }
+(gdb) n
+main () at p10original.c:16
+16       n2=input();
+(gdb) s
+input () at p10original.c:23
+23  {
+(gdb) n
+25      printf("For a complex number \n");
+(gdb) n
+For a complex number 
+26      printf("Enter the real and imaginary parts: ");
+(gdb) n
+27      scanf("%f %f", &n1.real, &n1.imag);
+(gdb) n
+Enter the real and imaginary parts: 5
+2
+28      return n1;
+(gdb) n
+29  }
+(gdb) n
+main () at p10original.c:17
+17       result = add(n1, n2);
+(gdb) s
+add (n1=..., n2=...) at p10original.c:39
+39      temp.real = n1.real + n2.real;
+(gdb) n
+40      temp.imag = n1.imag + n2.imag;
+(gdb) n
+41      return (temp);
+(gdb) n
+42  }(gdb) n
+main () at p10original.c:18
+18       output(n1,n2,result);
+(gdb) s
+output (n1=..., n2=..., result=...) at p10original.c:33
+33      printf("Sum = %.1f + %.1fi", result.real, result.imag);
+(gdb) n
+34  }
+(gdb) n
+main () at p10original.c:19
+19      return 0;
+(gdb) n
+20  }
+(gdb) c
+Continuing.
+Sum = 8.0 + 8.0i[Inferior 1 (process 742) exited normally]
+(gdb) quit
