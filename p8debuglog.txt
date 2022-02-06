@@ -1,0 +1,117 @@
+gcc -g p11original.c
+gdb a.out
+
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0xa1f: file p11original.c, line 63.
+(gdb) r
+Starting program: /home/runner/pps-test1-Supriya-26/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p11original.c:63
+63  {
+(gdb) n
+65    complex c[n], result;
+(gdb) n
+66    n=getn();
+(gdb) s
+getn () at p11original.c:9
+9   {
+(gdb) n
+11    printf("Enter no of complex number to be added\n");
+(gdb) n
+Enter no of complex number to be added
+12    scanf("%d",&n);
+(gdb) n
+3
+13    return n;
+(gdb) n
+14  }
+(gdb) n
+main () at p11original.c:67
+67    inputncomplex(n,c);
+(gdb) s
+inputncomplex (n=3, c=0x7fffe9baae50) at p11original.c:27
+27    for(i=0;i<n;i++)
+(gdb) n
+28    c[i]=inputcomplex();
+(gdb) n
+Enter complex number
+3
+8
+27    for(i=0;i<n;i++)
+(gdb) n
+28    c[i]=inputcomplex();
+(gdb) n
+Enter complex number
+7
+6
+27    for(i=0;i<n;i++)
+(gdb) n
+28    c[i]=inputcomplex();
+(gdb) n
+Enter complex number
+8
+1
+27    for(i=0;i<n;i++)
+(gdb) n
+29  }
+(gdb) n
+main () at p11original.c:68
+68    result=addncomplex(n,c);
+(gdb) s
+addncomplex (n=3, c=0x7fffe9baae50) at p11original.c:42
+42    result.real=0;
+(gdb) n
+43    result.imag=0;
+(gdb) n
+44    for(int i=0;i<n;i++)
+(gdb) n
+46    result=add(result,c[i]);
+(gdb) n
+44    for(int i=0;i<n;i++)
+(gdb) n
+46    result=add(result,c[i]);
+(gdb) n
+44    for(int i=0;i<n;i++)
+(gdb) n
+46    result=add(result,c[i]);
+(gdb) n
+44    for(int i=0;i<n;i++)
+(gdb) n
+48    return result;
+(gdb) n
+49  }
+(gdb) n
+main () at p11original.c:69
+69    output(n,c,result);
+(gdb) s
+output (n=3, c=0x7fffe9baae50, result=...) at p11original.c:54
+54    for(i=0;i<n;i++)
+(gdb) n
+56      printf("%.1f+%.1fi + ",c[i].real, c[i].imag);
+(gdb) n
+54    for(i=0;i<n;i++)
+(gdb) n
+56      printf("%.1f+%.1fi + ",c[i].real, c[i].imag);
+(gdb) n
+54    for(i=0;i<n;i++)
+(gdb) n
+56      printf("%.1f+%.1fi + ",c[i].real, c[i].imag);
+(gdb) n
+54    for(i=0;i<n;i++)
+(gdb) n
+58    printf("%.1f+%.1fi",c[n-1].real, c[n-1].imag);
+(gdb) n
+59    printf(" is %.1f+%.1fi",result.real, result.imag);
+(gdb) n
+60  }
+(gdb) n
+main () at p11original.c:70
+70    return 0;
+(gdb) n
+71  }
+(gdb) c
+Continuing.
+3.0+8.0i + 7.0+6.0i + 8.0+1.0i + 8.0+1.0i is 18.0+15.0i[Inferior 1 (process 29) exited normally]
+(gdb) quit
